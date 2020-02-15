@@ -1,0 +1,29 @@
+html {
+    font-family: 'helvetica neue', helvetica, arial, sans-serif;
+}
+
+h1 {
+    border-radius: 5px;
+    background-color: #223344;
+    color: #ffffff;
+    padding: 20px 20px;
+    max-height: 20%;
+}
+
+table {
+    width: 30%;
+    border-collapse: collapse;
+    border: 20px #1EB4D0;
+}
+
+th {
+    border: 20px #1EB4D0;
+}
+
+td {
+    width: 15%;
+    text-align: center;
+    vertical-align: center;;
+    border: 20px #1EB4D0;
+
+}

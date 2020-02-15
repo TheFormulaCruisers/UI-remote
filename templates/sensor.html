@@ -1,3 +1,7 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'sensor.css' %}">
+<link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,16 +10,17 @@
 </head>
 <body>
 <div>
-    <table id="table3">
-        <caption>The last 10 measurements for {{ sensor.name }}</caption>
+    <h1>{{ sensor.name }}</h1>
+    <h2>{{ sensor.description }}</h2>
+    <table>
         <tr>
-            <th scope="col">Timestamp</th>
-            <th scope="col">Value</th>
+            <th>Timestamp</th>
+            <th>Value</th>
         </tr>
         {% for measurement in latest_measurements %}
             <tr>
-                <td>{{measurement.measure_time|date:'Y-m-d H:i'}}</td>
-                <td>{{measurement.value}}{{ sensor.unit }}</td>
+                <td>{{ measurement.measure_time|date:'Y-m-d H:i:s.u' }}</td>
+                <td>{{ measurement.value }}{{ sensor.unit }}</td>
             </tr>
         {% endfor %}
     </table>

@@ -23,5 +23,5 @@ def index(request):
 
 def sensor(request, sensor_id):
     sensor = Sensors.objects.get(id=sensor_id)
-    latest_measurements = sensor.tempsens_set.all().order_by('-measure_time')[:10]
+    latest_measurements = sensor.measurements_set.all().order_by('-measure_time')[:10]
     return render(request, 'sensor.html', locals())
