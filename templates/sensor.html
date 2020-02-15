@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ sensor.name }}</title>
+</head>
+<body>
+<div>
+    <table id="table3">
+        <caption>The last 10 measurements for {{ sensor.name }}</caption>
+        <tr>
+            <th scope="col">Timestamp</th>
+            <th scope="col">Value</th>
+        </tr>
+        {% for measurement in latest_measurements %}
+            <tr>
+                <td>{{measurement.measure_time|date:'Y-m-d H:i'}}</td>
+                <td>{{measurement.value}}{{ sensor.unit }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+</body>
+</html>

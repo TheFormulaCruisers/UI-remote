@@ -1,0 +1,5 @@
+*.pyc
+UI_remote/site_settings.py
+.DS_Store
+.idea/
+*~
