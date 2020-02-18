@@ -22,7 +22,7 @@
             $('#sensor_7_value').text(data['8']);
             $('#sensor_8_value').text(data['9']);
             $('#sensor_9_value').text(data['10']);
-            $('#sensor_10_value').text(data['11']);
+            $('#sensor_10_value').text((parseInt(data['11'])) ? 'ON' : 'OFF');
             $('#sensor_11_value').text(data['12']);
         };
 
