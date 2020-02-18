@@ -1,7 +1,43 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'dashboard.css' %}">
 <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+<script src="{% static 'jquery-3.4.1.min.js' %}"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        console.log("doc ready");
+        var SensorSocket = new WebSocket(
+            'ws://' + window.location.host +
+            '/ws/sensor/');
 
+        SensorSocket.onmessage = function (e) {
+            let data = JSON.parse(e.data);
+            console.log(data);
+            $('#sensor_0_value').text(data['1']);
+            $('#sensor_1_value').text(data['2']);
+            $('#sensor_2_value').text(data['3']);
+            $('#sensor_3_value').text(data['4']);
+            $('#sensor_4_value').text(data['5']);
+            $('#sensor_5_value').text(data['6']);
+            $('#sensor_6_value').text(data['7']);
+            $('#sensor_7_value').text(data['8']);
+            $('#sensor_8_value').text(data['9']);
+            $('#sensor_9_value').text(data['10']);
+            $('#sensor_10_value').text(data['11']);
+            $('#sensor_11_value').text(data['12']);
+        };
+
+        SensorSocket.onclose = function (e) {
+            console.error('Chat socket closed unexpectedly');
+        };
+
+        function updateValues() {
+            console.log("Updating values");
+            SensorSocket.send("update");
+        }
+
+        setInterval(updateValues, 1000);
+    });
+</script>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,7 +72,7 @@
             <td>
                 <div class="sensor_name"><a href="3">
                     {{ sensor_list.2.name|default_if_none:'Sensor 3' }}
-                <a href="3"></div>
+                </a></div>
                 <div class="sensor_value" id="sensor_2_value">
                     {{ sensor_list.2.value|default_if_none:'N/A' }}{% if sensor_list.2.value != None %}
                         {{ sensor_list.2.unit }}{% endif %}

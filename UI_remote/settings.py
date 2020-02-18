@@ -86,7 +86,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'UI_remote.wsgi.application'
-ASGI_APPLICATION = 'sensors.routing.application'
+ASGI_APPLICATION = 'UI_remote.routing.application'
 
 
 # Database

@@ -1,6 +1,8 @@
-# mysite/routing.py
-from channels.routing import ProtocolTypeRouter
+# sensors/routing.py
+from django.urls import re_path
 
-application = ProtocolTypeRouter({
-    # (http->django views is added by default)
-})
+from . import consumers
+
+websocket_urlpatterns = [
+    re_path(r'ws/sensor/', consumers.SensorConsumer),
+]
